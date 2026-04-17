@@ -1,9 +1,3 @@
-Nice 😄 — let’s take it one level higher.
-
-Here’s your **🔥 premium GitHub README–style version** (same content, no removal, just better visuals, badges, and structure).
-
----
-
 ````md
 # 🐧 Linux Basics - Class 01  
 📅 **Date:** 30-03-2026  
