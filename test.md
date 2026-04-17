@@ -1,9 +1,3 @@
-Nice 😄 let’s level this up for your teaching + YouTube + GitHub.
-
-I’ll give you **all 3** quickly so you can use anywhere 👇
-
----
-
 # 🎯 1. Architecture Diagram (for README / Slides)
 
 You can paste this in GitHub (Mermaid supported) 👇
