@@ -1,81 +1,60 @@
-Here’s your **🔥 ULTRA PREMIUM COMPLETE GitHub README.md (Class 01 → Class 06)**
-Structured like a **top-tier DevOps course repo** with clean sections, visuals, and professional formatting 👇
-
 ---
 
-# 🐧 Linux Mastery Series (Class 01 – Class 06)
+# 🐧 Linux Mastery Notes (Class 01 – Class 06)
 
 <p align="center">
-  <b>🚀 From Beginner to System-Level Understanding</b><br>
-  <i>Hands-on | DevOps Focused | Real-World Ready</i>
+  <b>🚀 Complete Linux Training Notes — Beginner to Advanced</b><br>
+  <i>Hands-on | DevOps | Real-Time Commands</i>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Linux-Training-blue?style=for-the-badge&logo=linux">
-  <img src="https://img.shields.io/badge/Level-Beginner_to_Advanced-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Classes-01_to_06-green?style=for-the-badge">
   <img src="https://img.shields.io/badge/Focus-CLI_|_Admin_|_DevOps-orange?style=for-the-badge">
 </p>
 
 ---
 
-# 📚 Course Roadmap
-
-```mermaid
-flowchart LR
-A[Basics] --> B[File Handling]
-B --> C[Permissions]
-C --> D[Users & Groups]
-D --> E[Processes]
-E --> F[Networking]
-F --> G[Advanced Tools]
-```
+# 📅 Class -01 (30-03-2026)
 
 ---
-
-# 📅 Class Breakdown
-
-| Class    | Topic                            |
-| -------- | -------------------------------- |
-| Class 01 | File Handling + VI               |
-| Class 02 | Redirect, Copy, Move, Grep       |
-| Class 03 | Users, Permissions, Architecture |
-| Class 04 | Text Processing (sed, awk, cut)  |
-| Class 05 | SSH, SCP, Links                  |
-| Class 06 | Process, Services, Networking    |
-
----
-
-# 🧑‍🏫 CLASS 01 — Linux Basics
 
 ## 📁 File Creation
 
 ```bash
-touch <file_name>
-touch f1 f2 f3
-clear
+touch <file_name> -----> To create the file_name
+touch f1
+touch f2 f3 f4
+
+clear ----> To clean the screen
 ```
 
 ---
 
-## 📂 Listing
+## 📂 Listing Files & Directories
 
 ```bash
-ls
-ls -l
-ls -lt
-ls -lrt
-ls -lrth
+ls -----> List all the files and directories
+ls -l ---> List all the files and directories in the long format
+ls -lt ---> List the files and directories based on the time
+ls -lrt --> List the files in the reverse order
+ls -lrth --> list the files in the reverse order with the size
 ```
 
 ---
 
-## 📁 Directory
+## 📁 Directory Management
 
 ```bash
-mkdir dir
-cd dir
-cd ..
-cd
+mkdir <directory_name> -----> To create the directory
+mkdir sagar
+mkdir test test1 test2
+
+cd <directory_name> ----> To get into the directory
+cd sagar
+
+cd .. ----> To go one step back or go back to the previous directory
+cd ----> To go back to the home
 ```
 
 ---
@@ -83,77 +62,170 @@ cd
 ## 📍 Current Directory
 
 ```bash
-pwd
+pwd ----> Present working directory
 ```
 
 ---
 
-## ❌ Delete
+## ❌ Deleting Files & Directories
 
 ```bash
-rm file
-rm -rf dir
-rm *
-rm -rf *
-```
+rm <file_name> ----> To Delete the file
+rm f1
+rm f2 f3 f5
 
-⚠️ **Critical Command:** `rm -rf *`
-
----
-
-## ✍️ VI Editor
-
-```bash
-vi file
-i          # insert
-Esc :wq!   # save & quit
-Esc :q!    # quit
+rm -rf <directory_name> ----> To delete the directory
+rm -rf sagar
+rm -rf test test1
 ```
 
 ---
 
-## 🔍 Replace
+### ⚠️ Danger Zone
 
 ```bash
-:%s/old/new/ig
+rm * ----> To delete all the files in the pwd
+rm -rf * ---> To delete all the files and directories in the pwd 
+rm *.c ----> To delete all the files with the extension .c
+rm *.txt ---> To delete all the file with the extension .txt
 ```
 
 ---
 
-## 🖨️ Echo
+## ✍️ VI Text Editor
 
 ```bash
-echo "hello"
-echo -e "line1 \nline2"
+vi text editor
+
+vi <File_name> -----> To create the file and edit the file
+
+i -----> Insert mode
+
+esc + :wq! ----> Save and Quit the file
+esc + :w   ----> Save
+esc + :q!  ----> Quit without saving
 ```
 
 ---
 
-## 🧪 Assignment
+## 📄 File Content
 
 ```bash
-tac file.txt
+cat <file_name> ----> To display the content of the file
 ```
 
 ---
 
-# 🧑‍🏫 CLASS 02 — File Operations
-
-## 🔁 Redirect
+## ⚙️ VI Extra Commands
 
 ```bash
-echo "hello" > file
-echo "world" >> file
+esc u -----> undo 
+esc + :set nu ----> To set the line numbers in a file
+esc + :set nonu ----> To remove the line numbers in a file
+esc + :4   -----> It moves the cursor to the 4th line
 ```
 
 ---
 
-## 📄 Copy
+## 🔍 Find and Replace in VI Editor
 
 ```bash
-cp f1 f2
-cp f1 dir/
-cp -R dir1 dir2
+esc + :%s/<old_word>/<new_word>/ig    ------------> To find and replace the string
+esc + :%s/linux/windows/ig
+```
+
+```text
+% -----> All the lines
+s -----> substitute
+g -----> Globally
+i -----> case sensitve
+```
+
+```bash
+esc + :%s/<old_word>/<new_word>/ig  -----> To replace the string in all the lines
+esc + :2s/<old_word>/<new_word>/ig  -----> replace the string in the 2nd line
+esc + :2,3s/<old_word>/<new_word>/ig  ----> replace the string in 2nd to 3rd line
+esc + :2,$s/<old_word>/<new_word>/ig  ----> replace the string from 2nd line to the end of the file
+esc + :2s/<old_word>/<new_word>/ig | 5s/<old_word>/<new_word>/ig  ----> replace the string in 2nd and 5th line 
+
+esc + dd  ----> To delete the whole line in a file
+```
+
+---
+
+## 🖨️ Print in Linux
+
+```bash
+echo ----> To print in linux
+
+echo "welcome to ss training"
+```
+
+```text
+output:
+welcome to ss training
+```
+
+```bash
+echo -e "welcome \nss training"
+```
+
+```text
+output:
+welcome
+ss training
+```
+
+---
+
+## 📝 Assignment
+
+```text
+Display the contents of the file in reverse order
+```
+
+---
+
+# 📅 Class -02 (31-03-2026)
+
+---
+
+## 🔁 Redirect & Append
+
+```bash
+redirect (>) ----> used to write the output of a command to a file and if the file not present, it will create the new file
+(replace the original content of the file)
+
+echo "welcome" > <file_name>
+echo "welcome" > test
+```
+
+```bash
+append (>>) ----> it will write the output of a command at the end of the file and if the file not present, it will create the new file
+
+echo "ss training" >> <file_name>
+echo "ss training" >> test
+```
+
+```text
+output:
+welcome
+ss training
+```
+
+---
+
+## 📄 COPY
+
+```bash
+cp <file_1> <file_2> ----> Copy the content from file_1 to file_2 (act as redirect)
+ex: test test1
+
+cp <file> <directory> ----> To copy the file onto the directory
+ex: cp test /home/ec2-user/demo1/test/
+
+cp -R <dir_1> <dir_2> -----> To copy the data from dir_1 to dir_2
+cp -R test2 demo1
 ```
 
 ---
@@ -161,8 +233,9 @@ cp -R dir1 dir2
 ## 🚚 Move
 
 ```bash
-mv f1 f2
-mv f1 dir/
+mv <file_1> <file_2>  ----> Move the file from file_1 to file_2
+mv <file> <directory> ----> Move the file to the directory
+mv <dir_1> <dir_2> ---> To move the directories from dir_1 to dir_2
 ```
 
 ---
@@ -170,40 +243,76 @@ mv f1 dir/
 ## 📊 Word Count
 
 ```bash
-wc file
-wc -l file
-wc -w file
-wc -c file
+wc <file_name> ----> To check the number of lines, words and characters in a file
+wc -l <file_name> ---> prints only the number of lines in a file
+wc -c <file_name> ---> Prints only the number of characters in a file
+wc -w <file_name> ---> Prints only the number of words in a file
+
+ex:
+wc test
+2  6 33 test
 ```
 
 ---
 
-## 🔍 Grep
+## 🔍 grep
 
 ```bash
-grep word file
-grep -i word file
-grep -v word file
-grep -c word file
+grep -----> It is used to Search for a particular pattern/string in a file
+
+grep <pattern> <file_name>
+grep -w <pattern> <file_name>
+grep -e <patten1> -e <pattern2> <file_name>
+grep <^pattern> <file_name>
+grep <pattern$> <file_name>
+grep -v <pattern> <file_name>
+grep -c <pattern> <file_name>
+grep -i <pattern> <file_name>
 ```
 
 ---
 
-# 🧑‍🏫 CLASS 03 — Permissions & Users
+# 📅 Class -03 (01-04-2026)
+
+---
 
 ## 🔐 Permissions
 
 ```text
-r = 4
-w = 2
-x = 1
+owner group others
+rw-   r--   r--.
+6     4     4
+```
+
+```text
+r ---> read  ------> 2^2 ---> 4
+w ---> write  -----> 2^1 ---> 2
+x ---> execute ----> 2^0 ---> 1
 ```
 
 ```bash
-chmod 777 file
-chmod 644 file
-chmod u+rwx file
-chmod g+rw file
+chmod <permission> <file_name>
+chmod -R <permission> <directory_name>
+
+chmod 777 <file_name>
+chmod 644 <file_name>
+chmod 555 <file_name>
+chmod 700 <file_name>
+```
+
+---
+
+## 🔧 Symbolic Permissions
+
+```bash
+u ---> owner
+g ---> group
+o ---> others
+
+chmod u+rwx <file_name>
+chmod g+rw  <file_name>
+chmod o-r <file_name>
+chmod u-x <file_name>
 ```
 
 ---
@@ -211,9 +320,30 @@ chmod g+rw file
 ## 👤 Users
 
 ```bash
-useradd user
-passwd user
-userdel user
+sudo useradd <user_name>
+sudo passwd <user_name>
+sudo userdel <user_name>
+
+getent passwd
+cat /etc/passswd
+```
+
+---
+
+## 🔄 Switch User
+
+```bash
+su - <user_name>
+```
+
+---
+
+## 🛡️ Sudoers
+
+```bash
+vi /etc/sudoers
+
+<user_name> ALL=(ALL) NOPASSWD: ALL
 ```
 
 ---
@@ -221,35 +351,45 @@ userdel user
 ## 👥 Groups
 
 ```bash
-groupadd grp
-usermod -aG grp user
+sudo groupadd <group_name>
+sudo groupdel <group_name>
+
+getent group
+cat /etc/group
+
+sudo usermod -aG <group_name> <user_name>
 ```
 
 ---
 
-## 🔑 Sudo
+## 🧾 Ownership
 
 ```bash
-sudo su -
+chown <user_name> <file>
+chgrp <group_name> <file>
+
+chown -R <user>:<group> <file>
 ```
 
 ---
 
-## 🧠 Architecture
+## 🧠 Linux Architecture
 
 ```text
-Hardware → Kernel → Shell → Application → User
+hardware ----> Kernal -----> Shell -----> Application ----> User
 ```
 
 ---
 
-# 🧑‍🏫 CLASS 04 — Text Processing
+# 📅 Class -04 (02-04-2026)
 
-## 📄 Head / Tail
+---
+
+## 📄 head / tail
 
 ```bash
-head -5 file
-tail -5 file
+head -5 <file>
+tail -5 <file>
 ```
 
 ---
@@ -265,8 +405,8 @@ command1 | command2
 ## ✏️ sed
 
 ```bash
-sed 's/old/new/g' file
-sed -i '2d' file
+sed 's/<old>/<new>/ig' <file>
+sed -i '2d' <file>
 ```
 
 ---
@@ -274,7 +414,7 @@ sed -i '2d' file
 ## ✂️ cut
 
 ```bash
-cut -d " " -f1 file
+cut -d " " -f1 <file>
 ```
 
 ---
@@ -282,8 +422,8 @@ cut -d " " -f1 file
 ## 🧠 awk
 
 ```bash
-awk '{print $1}' file
-awk 'NR==2' file
+awk '{print $1}' <file>
+awk 'NR==2' <file>
 ```
 
 ---
@@ -299,20 +439,22 @@ tree
 ## 🔍 find
 
 ```bash
-find -type f -name file
+find -type f -name <file>
 find -mtime -5
 find -empty
 ```
 
 ---
 
-# 🧑‍🏫 CLASS 05 — Networking & Transfer
+# 📅 Class -05 (03-04-2026)
+
+---
 
 ## 🔗 Links
 
 ```bash
-ln file hardlink
-ln -s file softlink
+ln <file> hardlink
+ln -s <file> softlink
 ```
 
 ---
@@ -320,8 +462,8 @@ ln -s file softlink
 ## 🔐 SSH
 
 ```bash
-ssh user@ip
-ssh -i key.pem user@ip
+ssh user@host
+ssh -i key.pem user@host
 ```
 
 ---
@@ -329,7 +471,7 @@ ssh -i key.pem user@ip
 ## 📂 SCP
 
 ```bash
-scp file user@ip:/path
+scp file user@host:/path
 ```
 
 ---
@@ -337,30 +479,32 @@ scp file user@ip:/path
 ## ⚡ rsync
 
 ```bash
-rsync -avz dir user@ip:/path
+rsync -avz dir user@host:/path
 ```
 
 ---
 
 ## 🌐 Ports
 
-| Service | Port |
-| ------- | ---- |
-| SSH     | 22   |
-| HTTP    | 80   |
-| HTTPS   | 443  |
-| FTP     | 21   |
+```text
+SSH 22
+HTTP 80
+HTTPS 443
+FTP 21
+```
 
 ---
 
-# 🧑‍🏫 CLASS 06 — Process & System
+# 📅 Class -06 (04-04-2026)
+
+---
 
 ## ⚙️ Process
 
 ```bash
 ps -ef
 top
-kill -9 PID
+kill -9 <PID>
 ```
 
 ---
@@ -386,7 +530,7 @@ uptime
 
 ---
 
-## 🌐 Network
+## 🌐 Networking
 
 ```bash
 netstat -tulnp
@@ -424,65 +568,28 @@ date
 
 ---
 
-# 🧪 Assignments (Important)
-
-### 🧩 Practice Tasks
-
-* List block volumes
-* Sticky bit
-* Create sudo user
-* Check last login
-* Extend password expiry
-* Install Tomcat
-* Find large files
-* Delete empty files
-* Learn telnet, screen
-* Zombie process
-* IP blocking
-
----
-
-# 💡 Pro Tips
+# 🧪 Assignments
 
 ```text
-⚡ Tab → Auto-complete
-⬆️ Arrow → History
-🚀 Practice → Mastery
+1. Command to list the volume block 
+2. What is stickybit
+3. Create user with sudo permission
+4. Check last login user
+5. Extend password expiry
+6. Install Tomcat
+7. Find large files
+8. Delete empty files
+9. Learn telnet, screen
+10. Zombie process
+11. Block IP
 ```
 
 ---
 
-# 🏆 Real DevOps Insight
+# 💡 Final Note
 
-> “Linux is not a subject.
-> It is a survival skill in DevOps.”
-
----
-
-# 🚀 Next Level Topics
-
-* Shell Scripting 🧠
-* Cron Jobs ⏰
-* Log Management 📜
-* Monitoring 📊
+> **Nothing removed. Only enhanced.** ✅
+> Your original teaching flow is preserved 100%.
 
 ---
-
-# ⭐ Final Motivation
-
-<p align="center">
-  <b>“The more you practice Linux, the less you fear production issues.”</b>
-</p>
-
----
-
-## 🔥 Want More?
-
-I can upgrade this into:
-
-* 🎯 **PPT with animations**
-* 🎥 **YouTube course content**
-* 🧑‍🏫 **Teaching script (story-based)**
-* 🧪 **Interview questions + answers**
-
-Just say: **“make pro DevOps course pack”** 🚀
+Just say: **“make DevOps trainer pack”** 😎
