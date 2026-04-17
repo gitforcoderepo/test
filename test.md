@@ -1,7 +1,5 @@
 # 🎯 1. Architecture Diagram (for README / Slides)
 
-You can paste this in GitHub (Mermaid supported) 👇
-
 ````markdown
 ## 🏗 EKS Architecture
 
