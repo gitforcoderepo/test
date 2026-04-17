@@ -1,0 +1,245 @@
+---
+
+````markdown id="k8ssetup001"
+# 🚀 Kubernetes Cluster Setup using kubeadm (Master + Worker)
+
+A complete step-by-step guide to set up a Kubernetes cluster manually using `kubeadm`.
+
+---
+
+## ⚠️ Important
+
+👉 Switch to **root user** before executing all commands:
+```bash
+sudo su -
+````
+
+---
+
+# 🧹 1. Pre-clean (Run on ALL Nodes)
+
+```bash
+kubeadm reset -f
+rm -rf /etc/cni/net.d
+rm -rf /var/lib/cni/
+rm -rf /etc/kubernetes/
+```
+
+---
+
+# ⚙️ 2. System Setup (ALL Nodes)
+
+## 🔻 Disable Swap
+
+```bash
+swapoff -a
+sed -i '/swap/d' /etc/fstab
+```
+
+---
+
+## 🔧 Enable Kernel Modules
+
+```bash
+cat <<EOF | tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+modprobe overlay
+modprobe br_netfilter
+```
+
+---
+
+## 🌐 Sysctl Settings
+
+```bash
+cat <<EOF | tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.ipv4.ip_forward                 = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+EOF
+
+sysctl --system
+```
+
+---
+
+# 📦 3. Install Container Runtime (CRITICAL STEP)
+
+```bash
+apt update
+apt install -y containerd
+```
+
+---
+
+## ⚠️ Configure containerd (MOST IMPORTANT FIX)
+
+```bash
+mkdir -p /etc/containerd
+containerd config default | tee /etc/containerd/config.toml
+```
+
+### ✏️ Edit Configuration:
+
+```bash
+vi /etc/containerd/config.toml
+```
+
+👉 Change:
+
+```
+SystemdCgroup = true
+```
+
+---
+
+## 🔄 Restart Services
+
+```bash
+systemctl restart containerd
+systemctl enable containerd
+```
+
+---
+
+# ☸️ 4. Install Kubernetes Components
+
+```bash
+apt update
+apt install -y apt-transport-https ca-certificates curl
+
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list
+
+apt update
+apt install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+```
+
+---
+
+# 🔥 5. Initialize Master Node (MASTER ONLY)
+
+```bash
+kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
+---
+
+# 🧩 6. Configure kubectl (MASTER ONLY)
+
+```bash
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+---
+
+# 🔍 7. Verify Control Plane
+
+```bash
+kubectl get pods -n kube-system
+```
+
+---
+
+# 🌐 8. Install Network Plugin (Flannel)
+
+```bash
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+```
+
+---
+
+# 🔗 9. Join Worker Node
+
+👉 Run the join command from master output:
+
+```bash
+kubeadm join <MASTER-IP>:6443 \
+  --token <TOKEN> \
+  --discovery-token-ca-cert-hash sha256:<HASH>
+```
+
+---
+
+# ✅ 10. Final Verification
+
+```bash
+kubectl get nodes
+```
+
+### 🎯 Expected Output:
+
+```
+master     Ready
+worker-1   Ready
+```
+
+---
+
+# 🚀 11. Demo Deployment (MASTER ONLY)
+
+```bash
+kubectl create deployment nginx --image=nginx
+```
+
+---
+
+# 🎯 Summary
+
+| Step | Action                   |
+| ---- | ------------------------ |
+| 1    | Pre-clean nodes          |
+| 2    | System setup             |
+| 3    | Install containerd       |
+| 4    | Install Kubernetes tools |
+| 5    | Initialize master        |
+| 6    | Configure kubectl        |
+| 7    | Verify control plane     |
+| 8    | Install network plugin   |
+| 9    | Join worker              |
+| 10   | Verify cluster           |
+| 11   | Deploy app               |
+
+---
+
+# ⚠️ Common Mistakes (Tell Students 👇)
+
+❌ Forgot to disable swap
+❌ Missed `SystemdCgroup = true`
+❌ Network plugin not installed
+❌ Wrong join command
+
+---
+
+# 🔥 Pro Tip (For Live Classes)
+
+👉 If something breaks:
+
+```bash
+kubeadm reset -f
+```
+
+Then repeat setup cleanly 💯
+
+---
+
+# 🚀 Bonus
+
+👉 Next Steps:
+
+* Deploy Services (ClusterIP / NodePort / LoadBalancer)
+* Setup Ingress Controller
+* Deploy real applications
+
+---
+
+```
+
+---
