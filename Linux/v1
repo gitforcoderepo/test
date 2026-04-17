@@ -1,3 +1,61 @@
+Ahh got it — this happens because of **how Markdown renders on different platforms**.
+
+Let’s fix it properly 👇
+
+---
+
+## ❗ Why you didn’t see visuals
+
+Most likely you pasted into:
+
+* Not using **Markdown preview**
+* Or platform doesn’t support:
+
+  * `<div align="center">`
+  * `<details>` (collapsible sections)
+
+---
+
+## ✅ Where it works perfectly
+
+Use any of these:
+
+* **GitHub** → BEST (full visuals)
+* **Visual Studio Code** → Use *Preview mode*
+* Markdown viewers
+
+---
+
+## 🔧 Fix (IMPORTANT)
+
+### 👉 In VS Code
+
+1. Open `.md` file
+2. Press:
+
+```
+Ctrl + Shift + V
+```
+
+👉 Now you’ll see:
+
+* Badges ✅
+* Center alignment ✅
+* Dropdown sections ✅
+
+---
+
+## ⚠️ If still not working
+
+Then your viewer **doesn’t support advanced Markdown**.
+
+So here is a **100% compatible version (works everywhere)** 👇
+
+---
+
+## ✅ SAFE VERSION (No HTML, Still Clean)
+
+````md
 # 🐧 Linux Basics - Class 01  
 📅 30-03-2026  
 
@@ -14,3 +72,148 @@ touch <file_name> -----> To create the file_name
 touch f1
 touch f2 f3 f4
 clear ----> To clean the screen
+````
+
+---
+
+## 📂 Listing Files & Directories
+
+```bash
+ls -----> List all the files and directories
+ls -l ---> List all the files and directories in the long format
+ls -lt ---> List the files and directories based on the time
+ls -lrt --> List the files in the reverse order
+ls -lrth --> list the files in the reverse order with the size
+```
+
+---
+
+## 📁 Directory Management
+
+```bash
+mkdir <directory_name> -----> To create the directory
+mkdir sagar
+mkdir test test1 test2
+cd <directory_name> ----> To get into the directory
+cd sagar
+cd .. ----> To go one step back or go back to the previous directory
+cd ----> To go back to the home
+```
+
+---
+
+## 📍 Current Directory
+
+```bash
+pwd ----> Present working directory
+```
+
+---
+
+## ❌ Deleting Files & Directories
+
+```bash
+rm <file_name> ----> To Delete the file
+rm f1
+rm f2 f3 f5
+rm -rf <directory_name> ----> To delete the directory
+rm -rf sagar
+rm -rf test test1
+
+rm * ----> To delete all the files in the pwd
+rm -rf * ---> To delete all the files and directories in the pwd 
+rm *.c ----> To delete all the files with the extension .c
+rm *.txt ---> To delete all the file with the extension .txt
+```
+
+---
+
+## ✍️ VI Text Editor
+
+```bash
+vi text editor
+vi <File_name> -----> To create the file and edit the file
+
+i -----> Insert mode
+
+esc + :wq! ----> Save and Quit the file
+esc + :w   ----> Save
+esc + :q!  ----> Quit without saving
+
+cat <file_name> ----> To display the content of the file
+
+esc u -----> undo 
+esc + :set nu ----> To set the line numbers in a file
+esc + :set nonu ----> To remove the line numbers in a file
+esc + :4   -----> It moves the cursor to the 4th line
+```
+
+---
+
+## 🔍 Find and Replace in VI Editor
+
+```bash
+esc + :%s/<old_word>/<new_word>/ig    ------------> To find and replace the string
+esc + :%s/linux/windows/ig
+
+% -----> All the lines
+s -----> substitute
+g -----> Globally
+i -----> case sensitve
+
+esc + :%s/<old_word>/<new_word>/ig  -----> To replace the string in all the lines
+esc + :2s/<old_word>/<new_word>/ig  -----> replace the string in the 2nd line
+esc + :2,3s/<old_word>/<new_word>/ig  ----> replace the string in 2nd to 3rd line
+esc + :2,$s/<old_word>/<new_word>/ig  ----> replace the string from 2nd line to the end of the file
+esc + :2s/<old_word>/<new_word>/ig | 5s/<old_word>/<new_word>/ig  ----> replace the string in 2nd and 5th line 
+
+esc + dd  ----> To delete the whole line in a file
+```
+
+---
+
+## 🖨️ Print in Linux
+
+```bash
+echo ----> To print in linux
+
+echo "welcome to ss training"
+```
+
+Output:
+
+```
+welcome to ss training
+```
+
+```bash
+echo -e "welcome \nss training"
+```
+
+Output:
+
+```
+welcome
+ss training
+```
+
+---
+
+## 📝 Assignment
+
+Display the contents of the file in reverse order
+
+```
+
+---
+
+## 🎯 Bottom line
+
+- Use **GitHub** → full visuals 🚀  
+- Use **VS Code preview** → works well  
+- Else → use **safe version**
+
+---
+
+If you want, I can check your exact setup and tell **why it failed specifically** 👍
+```
